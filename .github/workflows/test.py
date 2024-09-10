@@ -1,10 +1,19 @@
-from datetime import datetime
-import os
+import nbformat as nbf
+import glob
 
-print(os.getcwd())
+for f in glob.glob('masters/*.ipynb'):
+    print(f)
+    nb = nbf.read(f, nbf.NO_CONVERT)
 
-with open('README.md', 'w') as f:
-    f.write("bob")
-    f.write(str(datetime.now()))
-
-print("\n".join(os.listdir()))
+    for c in nb.cells:
+        if "# BEGIN NOTE" in c['source']:
+            c['source'] = c['source'].split("# BEGIN NOTE")[0] + c['source'].split("# END NOTE")[-1]
+        
+        if "# NOTE" in c['source']:
+            lines = []
+            for line in c['source'].split('\n'):
+                if "# NOTE" not in line:
+                    lines.append(line)
+            c['source'] = "\n".join(lines)
+    
+    nbf.write(nb, f.replace("masters", "student", 1))

@@ -34,7 +34,7 @@ jobs:
       # Runs a set of commands using the runners shell
       - name: Convert notebooks
         run: |
-          mkdir -p masters
+          mkdir -p student
           ls
           pwd
           python .github/workflows/test.py

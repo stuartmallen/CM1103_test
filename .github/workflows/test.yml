@@ -33,6 +33,6 @@ jobs:
 
       - name: 
         run: |
-          git add ../README.md
+          git add README.md
           git commit -m “A commit message”
           git push

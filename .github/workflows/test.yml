@@ -35,6 +35,8 @@ jobs:
         run: |
           pwd
           ls
+          git config --global user.name 'Stuart Allen'
+          git config --global user.email 'AllenSM@cardiff.ac.uk'
           git add README.md
           git commit -m "A commit message"
           git push

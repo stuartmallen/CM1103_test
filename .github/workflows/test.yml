@@ -36,5 +36,5 @@ jobs:
           pwd
           ls
           git add README.md
-          git commit -m “A commit message”
+          git commit -m "A commit message"
           git push

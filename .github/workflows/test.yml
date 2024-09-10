@@ -33,6 +33,6 @@ jobs:
 
       - name: 
         run: |
-          git add /home/runner/work/CM1103_test/CM1103_test/README.md
+          git add /home/runner/work/CM1103_test/README.md
           git commit -m “A commit message”
           git push

@@ -34,6 +34,7 @@ jobs:
       - name: 
         run: |
           pwd
-          git add CM1103_test/README.md
+          ls
+          git add README.md
           git commit -m “A commit message”
           git push

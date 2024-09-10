@@ -1,5 +1,8 @@
 from datetime import datetime
+import os
 
-with open('../../README.md', 'w') as f:
+print(os.getcwd())
+
+with open('README.md', 'w') as f:
     f.write("bob")
     f.write(str(datetime.now()))

@@ -31,12 +31,15 @@ jobs:
       - name: Run a multi-line script
         run: python .github/workflows/test.py
 
-      - name: 
-        run: |
-          pwd
-          ls
+      - name: Check for modified files
+        id: git-check
+        run: echo ::set-output name=modified::$(if [ -n "$(git status --porcelain masters)" ]; then echo "true"; else echo "false"; fi)
+
+      - name: Update changes in GitHub repository
+        if: steps.git-check.outputs.modified == 'true'
+        run:  |
           git config --global user.name 'Stuart Allen'
           git config --global user.email 'AllenSM@cardiff.ac.uk'
-          git add README.md
-          git commit -m "A commit message"
+          git add -A student
+          git commit -m "[auto-commit] student versions of notebooks"
           git push
